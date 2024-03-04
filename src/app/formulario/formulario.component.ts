@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
+import { Persona } from '../persona.model';
 
 @Component({
   selector: 'app-formulario',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrl: './formulario.component.css'
 })
 export class FormularioComponent {
+
+  @Output() personaCreada = new EventEmitter<Persona>();
+
+
+  nombreInput: String = '';
+  apellidoInput: String = '';
+
+  agregarPersona() {
+    let persona1 = new Persona(this.nombreInput, this.apellidoInput);
+    this.personaCreada.emit(persona1);
+  }
 
 }
