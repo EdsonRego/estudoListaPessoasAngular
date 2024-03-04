@@ -20,6 +20,8 @@
     </div>
   </form>
   <hr/>
+  <!-- app-persona é o component filho, declarado abaixo no componente pai-->
+  <!-- passando [persona] e [indice] do componente pai ao componente filho persona-->
   <app-persona 
     *ngFor="let personaElemento of personas ; let i=index" [persona]="personaElemento" [indice]="i">
   </app-persona>
