@@ -10,25 +10,19 @@ import { PersonasService } from '../personas.service';
 })
 export class FormularioComponent {
 
-  //nombreInput: String = '';
-  //apellidoInput: String = '';
-
-  @ViewChild('nombreInput') nombreInput: ElementRef;
-  @ViewChild('apellidoInput') apellidoInput: ElementRef;
+  nombreInput: String = '';
+  apellidoInput: String = '';
 
   //Dependency Injection, via construtor
   constructor(private loggingSevice: LoggingService,
     private personasService: PersonasService) {
-      this.personasService.saludar.subscribe(
+    this.personasService.saludar.subscribe(
       (indice: number) => alert("El indice es: " + indice)
     );
   }
 
   agregarPersona() {
-    let persona1 = new Persona(this.nombreInput.nativeElement.value, this.apellidoInput.nativeElement.value);
-    //this.loggingSevice.enviarMensagemAConsole("Enviamos persona con nombre: " + persona1.nombre + " apellido " + persona1.apellido);
-    //this.personaCreada.emit(persona1);
+    let persona1 = new Persona(this.nombreInput, this.apellidoInput);
     this.personasService.agregarPersona(persona1);
   }
-
 }
